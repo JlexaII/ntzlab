@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NTZ Lab - российский производитель витаминных комплексов, косметики и пищевых продуктов в Москве. Качество по стандартам ISO и GMP.">
+  <meta name="description"
+    content="NTZ Lab - российский производитель витаминных комплексов, косметики и пищевых продуктов в Москве. Качество по стандартам ISO и GMP.">
   <meta name="keywords" content="витамины, косметика, пищевые добавки, СТМ, здоровье, Москва, NTZ Lab">
   <title>NTZ Lab - Здоровье и красота</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -17,19 +19,28 @@
     .fade-in {
       animation: fadeIn 0.5s ease-in;
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
+
     .product-image {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .product-image:hover {
       transform: scale(1.05);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
   </style>
 </head>
+
 <body>
   <div id="root"></div>
   <script type="text/babel">
@@ -41,7 +52,7 @@
       };
 
       return (
-        <header 
+        <header
           className="fixed top-0 left-0 w-full z-50 h-20 flex items-center justify-center text-white py-4 shadow-md"
           style={{ background: "linear-gradient(to right, #A5D6A7, #42A5F5)" }}
         >
@@ -76,21 +87,33 @@
     function Intro() {
       return (
         <section className="relative bg-white pt-24 pb-12">
+          <style>
+            {`
+          @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+          }
+          .pulse {
+            animation: pulse 2s ease-in-out infinite;
+          }
+        `}
+          </style>
           <div className="absolute top-0 left-0 w-2 h-full bg-green-500"></div>
           <div className="absolute top-0 right-0 w-2 h-full bg-green-500"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-100 rounded-full opacity-30"></div>
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10">
             <div className="md:w-1/2 mb-6 md:mb-0">
               <h1 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight uppercase">
-                Контрактное производство витаминов и пищевых добавок {" "}
-                <span className="inline-block bg-green-500 text-white px-2 py-1">под СТМ</span>
+                Контрактное производство витаминов и пищевых добавок{" "}
+                <span className="inline-block bg-green-500 text-white px-2 py-1 transform -rotate-[18deg] translate-y-2 rounded pulse">под СТМ</span>
               </h1>
             </div>
             <div className="md:w-1/2 flex justify-center">
               <img
-                src="/image/bottle.png" // Убедитесь, что это ваше изображение
+                src="/image/bottle.png"
                 alt="Ваш Бренд"
-                className="max-w-full h-auto fade-in"
+                className="max-w-full h-auto fade-in pulse"
               />
             </div>
           </div>
@@ -137,14 +160,14 @@
             </p>
             <div className="flex justify-center">
               <div className="text-center">
-                <input 
-                  type="file" 
-                  accept=".xlsx" 
-                  onChange={handleFileChange} 
+                <input
+                  type="file"
+                  accept=".xlsx"
+                  onChange={handleFileChange}
                   className="text-gray-700 text-sm md:text-base mb-4"
                 />
-                <button 
-                  onClick={handleFileLoad} 
+                <button
+                  onClick={handleFileLoad}
                   className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm md:text-base"
                 >
                   Загрузить данные файла
@@ -186,8 +209,8 @@
             </p>
             <div className="relative flex flex-wrap justify-center gap-6">
               {products.map((product, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`relative ${index % 2 === 0 ? "mt-6" : "-mt-6"}`}
                   style={{ zIndex: products.length - index }}
                 >
@@ -195,7 +218,7 @@
                     src={product.image}
                     alt={product.name}
                     className="product-image rounded-lg shadow-md"
-                    style={{ 
+                    style={{
                       width: index % 2 === 0 ? '200px' : '250px',
                       height: index % 2 === 0 ? '300px' : '350px',
                       objectFit: 'cover'
@@ -279,4 +302,5 @@
     root.render(<App />);
   </script>
 </body>
+
 </html>
