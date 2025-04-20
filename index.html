@@ -518,13 +518,12 @@
               {forms.map((form, index) => (
                 <div
                   key={index}
-                  className="relative rounded-lg shadow-md overflow-hidden h-48 flex items-center justify-center group"
+                  className="relative rounded-lg shadow-md overflow-hidden h-48 flex items-center justify-center group bg-center bg-no-repeat bg-contain"
                   style={{
                     backgroundImage: `url(${form.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
                   }}
                 >
+
                   {/* Затемнение фона */}
                   <div className="absolute inset-0 bg-black opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
                   {/* Контейнер для текста и кнопки */}
