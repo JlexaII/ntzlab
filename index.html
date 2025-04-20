@@ -133,58 +133,16 @@
     }
 
     function About() {
-      const [fileData, setFileData] = React.useState(null);
-
-      const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            const base64Data = e.target.result.split(',')[1];
-            setFileData(base64Data);
-            window.gk_isXlsx = true;
-            window.gk_xlsxFileLookup[file.name] = true;
-            window.gk_fileData[file.name] = base64Data;
-          };
-          reader.readAsDataURL(file);
-        }
-      };
-
-      const handleFileLoad = () => {
-        const filename = Object.keys(window.gk_fileData)[0];
-        if (filename && window.loadFileData) {
-          const result = window.loadFileData(filename);
-          console.log("Loaded file data:", result);
-          alert("Данные файла загружены! Проверьте консоль для результата.");
-        } else {
-          console.error("loadFileData is not defined or no file loaded");
-          alert("Ошибка: файл не загружен или loadFileData не определена.");
-        }
-      };
-
       return (
         <section className="py-12 md:py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-green-800">Наши основные направления</h2>
-            <p className="text-base md:text-lg text-gray-700 text-center mb-6">
-              Мы производим продукты для здоровья и красоты для разных целей, включая витаминные комплексы, пищевые добавки и косметику. Вы можете выбрать готовые рецептуры или заказать разработку уникального продукта, созданного специально для вас.
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-green-800">
+              Наши основные направления
+            </h2>
+            <p className="text-base md:text-lg text-gray-700 text-center">
+              Мы производим продукты для здоровья и красоты для разных целей, включая витаминные комплексы, пищевые добавки и косметику.
+              Вы можете выбрать готовые рецептуры или заказать разработку уникального продукта, созданного специально для вас.
             </p>
-            <div className="flex justify-center">
-              <div className="text-center">
-                <input
-                  type="file"
-                  accept=".xlsx"
-                  onChange={handleFileChange}
-                  className="text-gray-700 text-sm md:text-base mb-4"
-                />
-                <button
-                  onClick={handleFileLoad}
-                  className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm md:text-base"
-                >
-                  Загрузить данные файла
-                </button>
-              </div>
-            </div>
           </div>
         </section>
       );
