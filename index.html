@@ -15,23 +15,6 @@
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="/js/app.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          animation: {
-            "pulse-text": "pulseText 2s infinite",
-          },
-          keyframes: {
-            pulseText: {
-              "0%, 100%": { color: "#ffffff" }, // text-white
-              "50%": { color: "#34d399" }, // text-green-400
-            },
-          },
-        },
-      },
-    };
-  </script>
   <style>
     .fade-in {
       animation: fadeIn 0.5s ease-in;
@@ -98,7 +81,7 @@
               <a href="#capabilities" className="py-2 hover:underline hover:text-brown-300 transition-colors" onClick={toggleMenu}>Возможности</a>
               <a href="#process" className="py-2 hover:underline hover:text-brown-300 transition-colors" onClick={toggleMenu}>Процесс</a>
               <a href="#contacts" className="py-2 hover:underline hover:text-brown-300 transition-colors" onClick={toggleMenu}>Контакты</a>
-              <div className="flex items-center space-x-2 py-2 animate-pulse-text">
+              <div className="flex items-center space-x-2 py-2">
                 <span className="text-white text-sm">Горячая линия связи:</span>
                 <a href="tel:+74951465051" className="text-white hover:underline hover:text-brown-300 transition-colors text-sm">+7 (495) 146-50-51</a>
               </div>
