@@ -381,7 +381,7 @@
         <section id="products" className="py-12 md:py-16 bg-white">
           <div className="container mx-auto px-4">
             {/* Заголовок */}
-            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-12 uppercase">
+            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-12 text-center uppercase">
               Наши продукты
             </h2>
             <div className="flex flex-col md:flex-row items-center">
@@ -442,6 +442,65 @@
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function ReleaseForms() {
+      const forms = [
+        { name: "Твердые капсулы", image: "/image/hard-capsules.jpg" },
+        { name: "Мягкие капсулы", image: "/image/soft-capsules.png" },
+        { name: "Саше-пакеты", image: "/image/sachet.jpg" },
+        { name: "Жидкие формы", image: "/image/liquid.jpg" },
+        { name: "Дой-паки", image: "/image/doypack.jpg" },
+        { name: "Банки ПЭТ", image: "/image/pet-jars.jpg" },
+      ];
+
+      // Функция для прокрутки к секции Contacts
+      const scrollToContacts = () => {
+        const contactsSection = document.getElementById("contacts");
+        if (contactsSection) {
+          contactsSection.scrollIntoView({ behavior: "smooth" });
+        }
+      };
+
+      return (
+        <section id="release-forms" className="py-12 md:py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-12 text-center uppercase">
+              Формы выпуска
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {forms.map((form, index) => (
+                <div
+                  key={index}
+                  className="relative rounded-lg shadow-md overflow-hidden h-48 flex items-center justify-center group"
+                  style={{
+                    backgroundImage: `url(${form.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  {/* Затемнение фона */}
+                  <div className="absolute inset-0 bg-black opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                  {/* Контейнер для текста и кнопки */}
+                  <div className="relative z-10 text-center">
+                    {/* Текст */}
+                    <h3 className="text-white text-lg md:text-xl font-bold uppercase px-4">
+                      {form.name}
+                    </h3>
+                    {/* Кнопка (появляется при наведении) */}
+                    <button
+                      onClick={scrollToContacts}
+                      className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300"
+                    >
+                      Свяжитесь с нами
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -527,7 +586,7 @@
         <section id="process" className="py-12 md:py-16 bg-white relative">
           <div className="container mx-auto px-4">
             {/* Заголовок */}
-            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-12 uppercase">
+            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-12 text-center uppercase">
               Этапы работы с нами
             </h2>
 
@@ -574,15 +633,124 @@
       );
     }
 
+    function PrivacyPolicy() {
+      return (
+        <div className="p-6 text-gray-800">
+          <h2 className="text-2xl font-bold text-green-800 mb-4">
+            Политика конфиденциальности NTZ Lab
+          </h2>
+          <p className="mb-4">
+            Настоящая Политика конфиденциальности (далее — «Политика») действует в
+            отношении всей информации, которую компания NTZ Lab (далее — «Компания»),
+            расположенная по адресу: Москва, ул. Ольховская, 47, может получить о
+            пользователе во время использования сайта Компании.
+          </p>
+
+          <h3 className="text-lg font-semibold mb-2">1. Общие положения</h3>
+          <p className="mb-4">
+            1.1. Использование сайта Компании означает безоговорочное согласие
+            пользователя с настоящей Политикой и указанными в ней условиями обработки
+            персональных данных.
+            1.2. В случае несогласия с этими условиями пользователь должен воздержаться
+            от использования сайта.
+          </p>
+
+          <h3 className="text-lg font-semibold mb-2">2. Персональные данные</h3>
+          <p className="mb-4">
+            2.1. Компания собирает следующие персональные данные: имя, номер телефона,
+            адрес электронной почты, предоставленные пользователем при заполнении форм на
+            сайте.
+            2.2. Персональные данные обрабатываются в целях предоставления консультаций,
+            обработки запросов на производство и информирования пользователя о продукции
+            NTZ Lab.
+          </p>
+
+          <h3 className="text-lg font-semibold mb-2">3. Условия обработки данных</h3>
+          <p className="mb-4">
+            3.1. Компания обязуется не передавать персональные данные третьим лицам,
+            за исключением случаев, предусмотренных законодательством Российской
+            Федерации.
+            3.2. Компания принимает необходимые меры для защиты персональных данных от
+            несанкционированного доступа.
+          </p>
+
+          <h3 className="text-lg font-semibold mb-2">4. Права пользователя</h3>
+          <p className="mb-4">
+            4.1. Пользователь имеет право запросить информацию о своих персональных
+            данных, их обработке, а также потребовать их удаления, обратившись по адресу:
+            ceo@eco-ideal.com.
+            4.2. Пользователь может отозвать согласие на обработку данных, направив
+            письменный запрос в Компанию.
+          </p>
+
+          <h3 className="text-lg font-semibold mb-2">5. Заключительные положения</h3>
+          <p className="mb-4">
+            5.1. Компания оставляет за собой право вносить изменения в настоящую
+            Политику. Новая редакция Политики вступает в силу с момента ее размещения на
+            сайте.
+            5.2. Все споры, связанные с настоящей Политикой, разрешаются в соответствии
+            с законодательством Российской Федерации.
+          </p>
+
+          <p className="mt-6">
+            Если у вас есть вопросы по данной Политике, пожалуйста, свяжитесь с нами по
+            email: <a href="mailto:ceo@eco-ideal.com" className="text-green-600 hover:text-green-800">ceo@eco-ideal.com</a>.
+          </p>
+        </div>
+      );
+    }
+
+    function PrivacyModal({ isOpen, onClose }) {
+      if (!isOpen) return null;
+
+      return (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          {/* Затемненный фон */}
+          <div
+            className="absolute inset-0 bg-black opacity-50"
+            onClick={onClose}
+          ></div>
+          {/* Модальное окно */}
+          <div className="relative bg-white rounded-lg shadow-lg max-w-3xl w-full max-h-[80vh] overflow-y-auto p-6">
+            {/* Кнопка закрытия */}
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 focus:outline-none"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            {/* Содержимое модального окна */}
+            <PrivacyPolicy />
+          </div>
+        </div>
+      );
+    }
+
     function Contacts() {
       const [formData, setFormData] = React.useState({
         name: "",
         phone: "",
+        email: "",
       });
       const [errors, setErrors] = React.useState({
         name: "",
         phone: "",
+        email: "",
       });
+      const [isModalOpen, setIsModalOpen] = React.useState(false);
 
       // Обработчик изменения полей формы
       const handleChange = (e) => {
@@ -596,7 +764,7 @@
       // Валидация формы
       const validateForm = () => {
         let isValid = true;
-        const newErrors = { name: "", phone: "" };
+        const newErrors = { name: "", phone: "", email: "" };
 
         // Валидация имени
         if (!formData.name.trim()) {
@@ -617,6 +785,16 @@
           isValid = false;
         }
 
+        // Валидация email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!formData.email) {
+          newErrors.email = "Email не может быть пустым";
+          isValid = false;
+        } else if (!emailRegex.test(formData.email)) {
+          newErrors.email = "Введите корректный email";
+          isValid = false;
+        }
+
         setErrors(newErrors);
         return isValid;
       };
@@ -628,7 +806,7 @@
           // Формируем mailto ссылку
           const subject = encodeURIComponent("Сообщение с сайта NTZ Lab");
           const body = encodeURIComponent(
-            `Имя: ${formData.name}\nТелефон: ${formData.phone}`
+            `Имя: ${formData.name}\nТелефон: ${formData.phone}\nEmail: ${formData.email}`
           );
           const mailtoLink = `mailto:ceo@eco-ideal.com?subject=${subject}&body=${body}`;
 
@@ -636,9 +814,18 @@
           window.location.href = mailtoLink;
 
           // Очищаем форму после отправки
-          setFormData({ name: "", phone: "" });
-          setErrors({ name: "", phone: "" });
+          setFormData({ name: "", phone: "", email: "" });
+          setErrors({ name: "", phone: "", email: "" });
         }
+      };
+
+      // Функции для открытия и закрытия модального окна
+      const openModal = (e) => {
+        e.preventDefault();
+        setIsModalOpen(true);
+      };
+      const closeModal = () => {
+        setIsModalOpen(false);
       };
 
       return (
@@ -655,7 +842,7 @@
           ></div>
 
           <div className="container mx-auto px-4 relative z-10">
-            <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center text-green-800">
+            <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center text-green-800 uppercase">
               Свяжитесь с нами
             </h2>
             <div className="flex flex-col md:flex-row justify-between items-start">
@@ -675,22 +862,25 @@
               {/* Форма */}
               <div className="w-full md:w-1/2">
                 <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+                  <p className="text-lg md:text-xl font-bold text-green-800 uppercase mb-6 text-center">
+                    Получите консультацию и начните производство уже сегодня
+                  </p>
                   <div className="mb-4">
-                    <label htmlFor="name" className="block text-gray-700 mb-2">
-                      Имя
+                    <label htmlFor="email" className="block text-gray-700 mb-2">
+                      Email
                     </label>
                     <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
                       onChange={handleChange}
-                      placeholder="Ваше имя"
-                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${errors.name ? "border-red-500 focus:ring-red-500" : "focus:ring-green-500"
+                      placeholder="Email"
+                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${errors.email ? "border-red-500 focus:ring-red-500" : "focus:ring-green-500"
                         }`}
                     />
-                    {errors.name && (
-                      <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">{errors.email}</p>
                     )}
                   </div>
                   <div className="mb-4">
@@ -703,12 +893,30 @@
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+7 (XXX) XXX-XX-XX"
+                      placeholder="Телефон"
                       className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${errors.phone ? "border-red-500 focus:ring-red-500" : "focus:ring-green-500"
                         }`}
                     />
                     {errors.phone && (
                       <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                    )}
+                  </div>
+                  <div className="mb-4">
+                    <label htmlFor="name" className="block text-gray-700 mb-2">
+                      Имя
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Имя"
+                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${errors.name ? "border-red-500 focus:ring-red-500" : "focus:ring-green-500"
+                        }`}
+                    />
+                    {errors.name && (
+                      <p className="text-red-500 text-sm mt-1">{errors.name}</p>
                     )}
                   </div>
                   <button
@@ -717,14 +925,27 @@
                   >
                     Отправить
                   </button>
+                  <p className="text-gray-600 text-sm mt-4 text-center">
+                    Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с{" "}
+                    <a
+                      href="#"
+                      onClick={openModal}
+                      className="text-green-600 hover:text-green-800"
+                    >
+                      политикой конфиденциальности
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Модальное окно */}
+          <PrivacyModal isOpen={isModalOpen} onClose={closeModal} />
         </section>
       );
     }
-
+    
     function Footer() {
       return (
         <footer className="bg-green-500 text-white py-4">
@@ -747,6 +968,7 @@
           <About />
           <Capabilities />
           <Products />
+          <ReleaseForms />
           <Process />
           <Contacts />
           <Footer />
