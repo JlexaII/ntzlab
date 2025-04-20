@@ -15,6 +15,23 @@
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="/js/app.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            "pulse-text": "pulseText 2s infinite",
+          },
+          keyframes: {
+            pulseText: {
+              "0%, 100%": { color: "#ffffff" }, // text-white
+              "50%": { color: "#34d399" }, // text-green-400
+            },
+          },
+        },
+      },
+    };
+  </script>
   <style>
     .fade-in {
       animation: fadeIn 0.5s ease-in;
@@ -52,22 +69,27 @@
       };
 
       return (
-        <header
-          className="fixed top-0 left-0 w-full z-50 h-20 flex items-center justify-center text-white py-4 shadow-md bg-white" >
+        <header className="fixed top-0 left-0 w-full z-50 h-20 flex items-center justify-center text-white py-4 shadow-md bg-white">
           <div className="container mx-auto px-4 flex justify-between items-center relative z-10">
             <img src="/image/logo.png" alt="NTZ Lab Logo" className="h-32" />
-            <nav className="hidden md:flex space-x-4">
-              <a href="#products" className="text-green-900 hover:underline hover:text-brown-300 transition-colors text-sm md:text-base">Продукты</a>
-              <a href="#capabilities" className="text-green-900 hover:underline hover:text-brown-300 transition-colors text-sm md:text-base">Возможности</a>
-              <a href="#process" className="text-green-900 hover:underline hover:text-brown-300 transition-colors text-sm md:text-base">Процесс</a>
-              <a href="#contacts" className="text-green-900 hover:underline hover:text-brown-300 transition-colors text-sm md:text-base">Контакты</a>
-            </nav>
-            <div className="md:hidden">
-              <button onClick={toggleMenu} className="text-white focus:outline-none">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
-                </svg>
-              </button>
+            <div className="flex items-center space-x-4">
+              <nav className="hidden md:flex space-x-4">
+                <a href="#products" className="text-green-900 hover:underline hover:text-brown-300 transition-colors text-sm md:text-base">Продукты</a>
+                <a href="#capabilities" className="text-green-900 hover:underline hover:text-brown-300 transition-colors text-sm md:text-base">Возможности</a>
+                <a href="#process" className="text-green-900 hover:underline hover:text-brown-300 transition-colors text-sm md:text-base">Процесс</a>
+                <a href="#contacts" className="text-green-900 hover:underline hover:text-brown-300 transition-colors text-sm md:text-base">Контакты</a>
+              </nav>
+              <div className="hidden md:flex items-center space-x-2">
+                <span className="text-green-900 text-sm md:text-base">Горячая линия связи:</span>
+                <a href="tel:+74951465051" className="text-green-900 hover:underline hover:text-brown-300 transition-colors text-sm md:text-base">+7 (495) 146-50-51</a>
+              </div>
+              <div className="md:hidden">
+                <button onClick={toggleMenu} className="text-green-900 focus:outline-none">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
           {isMenuOpen && (
@@ -76,6 +98,10 @@
               <a href="#capabilities" className="py-2 hover:underline hover:text-brown-300 transition-colors" onClick={toggleMenu}>Возможности</a>
               <a href="#process" className="py-2 hover:underline hover:text-brown-300 transition-colors" onClick={toggleMenu}>Процесс</a>
               <a href="#contacts" className="py-2 hover:underline hover:text-brown-300 transition-colors" onClick={toggleMenu}>Контакты</a>
+              <div className="flex items-center space-x-2 py-2 animate-pulse-text">
+                <span className="text-white text-sm">Горячая линия связи:</span>
+                <a href="tel:+74951465051" className="text-white hover:underline hover:text-brown-300 transition-colors text-sm">+7 (495) 146-50-51</a>
+              </div>
             </div>
           )}
         </header>
