@@ -125,27 +125,37 @@
     }
 
     function Intro() {
+      const images = ["/image/bottle.png", "/image/bottle_two.png"];
+      const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+
+      React.useEffect(() => {
+        const interval = setInterval(() => {
+          setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 5000); // Меняем изображение каждые 5 секунд
+        return () => clearInterval(interval); // Очищаем интервал при размонтировании
+      }, [images.length]);
+
       return (
         <section className="relative bg-white pt-24 pb-12">
           <style>
             {`
-          @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-          }
-          @keyframes swing {
-            0% { transform: rotate(-6deg) translateY(0.5rem); }
-            50% { transform: rotate(-4deg) translateY(0.5rem); }
-            100% { transform: rotate(-6deg) translateY(0.5rem); }
-          }
-          .pulse {
-            animation: pulse 2s ease-in-out infinite;
-          }
-          .swing {
-            animation: swing 1.5s ease-in-out infinite;
-          }
-        `}
+              @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+              }
+              @keyframes swing {
+                0% { transform: rotate(-6deg) translateY(0.5rem); }
+                50% { transform: rotate(-4deg) translateY(0.5rem); }
+                100% { transform: rotate(-6deg) translateY(0.5rem); }
+              }
+              .pulse {
+                animation: pulse 2s ease-in-out infinite;
+              }
+              .swing {
+                animation: swing 1.5s ease-in-out infinite;
+              }
+            `}
           </style>
           <div className="absolute top-1/2 left-0 w-2 h-32 bg-green-500"></div>
           <div className="absolute top-0 right-0 w-1/4 h-full bg-green-500"></div>
@@ -162,7 +172,7 @@
             </div>
             <div className="md:w-1/2 flex justify-center">
               <img
-                src="/image/bottle.png"
+                src={images[currentImageIndex]}
                 alt="Ваш Бренд"
                 className="max-w-1/2 h-80 fade-in pulse"
               />
