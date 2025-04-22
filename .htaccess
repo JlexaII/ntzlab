@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Перенаправление с HTTP на HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Перенаправление с ntzlab.ru на www.ntzlab.ru
+RewriteCond %{HTTP_HOST} ^ntzlab\.ru$ [NC]
+RewriteRule ^(.*)$ https://www.ntzlab.ru/$1 [L,R=301]
